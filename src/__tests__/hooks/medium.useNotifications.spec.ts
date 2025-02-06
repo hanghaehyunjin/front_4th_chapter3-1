@@ -9,9 +9,9 @@ const mockEvent: Event[] = [
   {
     id: '1',
     title: '팀 회의',
-    date: formatDate(new Date('2025-02-20')),
-    startTime: parseHM(new Date('2025-02-20T10:00:00').getTime()),
-    endTime: parseHM(new Date('2025-02-20T11:00:00').getTime()),
+    date: formatDate(new Date('2024-10-01')),
+    startTime: parseHM(new Date('2024-10-01T10:00:00').getTime()),
+    endTime: parseHM(new Date('2024-10-01T11:00:00').getTime()),
     description: '주간 팀 미팅',
     location: '회의실 A',
     category: '업무',
@@ -28,7 +28,7 @@ it('초기 상태에서는 알림이 없어야 한다', async () => {
 
 it('지정된 시간이 된 경우 알림이 새롭게 생성되어 추가된다', async () => {
   vi.useFakeTimers();
-  const testDate = new Date('2025-02-20T09:58:00');
+  const testDate = new Date('2024-10-01T09:58:00');
   vi.setSystemTime(testDate);
 
   const closestEvent: Event[] = [
@@ -36,8 +36,8 @@ it('지정된 시간이 된 경우 알림이 새롭게 생성되어 추가된다
       id: '1',
       title: '곧 시작될 회의',
       date: formatDate(testDate),
-      startTime: parseHM(new Date('2025-02-20T10:00:00').getTime()),
-      endTime: parseHM(new Date('2025-02-20T11:00:00').getTime()),
+      startTime: parseHM(new Date('2024-10-01T10:00:00').getTime()),
+      endTime: parseHM(new Date('2024-10-01T11:00:00').getTime()),
       notificationTime: 2,
       category: '업무',
       description: '테스트 회의',
@@ -80,7 +80,7 @@ it('index를 기준으로 알림을 적절하게 제거할 수 있다', async ()
 
 it('이미 알림이 발생한 이벤트에 대해서는 중복 알림이 발생하지 않아야 한다', async () => {
   vi.useFakeTimers();
-  const testDate = new Date('2025-02-20T09:58:00');
+  const testDate = new Date('2024-10-01T09:58:00');
   vi.setSystemTime(testDate);
 
   const closestEvent: Event[] = [
@@ -88,8 +88,8 @@ it('이미 알림이 발생한 이벤트에 대해서는 중복 알림이 발생
       id: '1',
       title: '곧 시작될 회의',
       date: formatDate(testDate),
-      startTime: parseHM(new Date('2025-02-20T10:00:00').getTime()),
-      endTime: parseHM(new Date('2025-02-20T11:00:00').getTime()),
+      startTime: parseHM(new Date('2024-10-01T10:00:00').getTime()),
+      endTime: parseHM(new Date('2024-10-01T11:00:00').getTime()),
       notificationTime: 2,
       category: '업무',
       description: '테스트 회의',
